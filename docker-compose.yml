@@ -1,0 +1,16 @@
+services:
+  autostream-agent:
+    build: .
+    container_name: autostream_agent
+    # This connects your local terminal to the container's terminal
+    # CRITICAL for the input() function to work in main.py
+    stdin_open: true 
+    tty: true        
+    
+    # This automatically loads your API key from your local .env file
+    env_file:
+      - .env
+    
+    # Mounts your code so you can edit locally and see changes (optional, but good for dev)
+    volumes:
+      - .:/app
